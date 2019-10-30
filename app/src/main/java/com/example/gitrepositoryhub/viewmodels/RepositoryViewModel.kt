@@ -3,7 +3,9 @@ package com.example.gitrepositoryhub.viewmodels
 import androidx.lifecycle.ViewModel
 import com.example.gitrepositoryhub.data.Repository
 
-class RepositoryViewModel(val repository: Repository) : ViewModel(){
+class RepositoryViewModel(repository: Repository) : ViewModel(){
+
+    private val repository = checkNotNull(repository)
 
     val id
         get() = repository.id

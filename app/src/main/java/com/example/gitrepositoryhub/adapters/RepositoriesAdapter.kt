@@ -10,22 +10,30 @@ import com.example.gitrepositoryhub.R
 import com.example.gitrepositoryhub.data.Repository
 import com.example.gitrepositoryhub.databinding.ListItemRepositoryBinding
 import com.example.gitrepositoryhub.viewmodels.RepositoryViewModel
+import android.R.attr.data
 
-class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(RepositoriesDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
-        return RepositoryViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.list_item_repository, parent, false
-            )
-        )
+
+class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(ProductDiffCallback()) {
+
+   /* fun setData(newData: List<Repository>) {
+        this.repositories = newData
+        notifyDataSetChanged()
     }
+*/
+   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
+       return RepositoryViewHolder(
+           DataBindingUtil.inflate(
+               LayoutInflater.from(parent.context),
+               R.layout.list_item_repository, parent, false
+           )
+       )
+   }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        getItem(position).let { repository->
+        getItem(position).let { repositories ->
             with(holder) {
-                bind(repository)
+                bind(repositories)
             }
         }
     }
@@ -41,8 +49,7 @@ class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.Reposito
         }
     }
 
-    // Make sure that the git repositories aren't displayed twice.
-    private class RepositoriesDiffCallback : DiffUtil.ItemCallback<Repository>() {
+    private class ProductDiffCallback : DiffUtil.ItemCallback<Repository>() {
 
         override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {
             return oldItem.id == newItem.id
@@ -52,4 +59,5 @@ class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.Reposito
             return oldItem.name == newItem.name
         }
     }
+
 }

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gitrepositoryhub.adapters.RepositoriesAdapter
 import com.example.gitrepositoryhub.data.Repository
 import com.example.gitrepositoryhub.databinding.ActivityRepositoriesBinding
@@ -36,11 +37,12 @@ class RepositoriesActivity : AppCompatActivity() {
             provideRepositoriesViewModelFactory(context)).get(RepositoriesViewModel::class.java)
 
         binding = DataBindingUtil.setContentView<ActivityRepositoriesBinding>(this, R.layout.activity_repositories)
-        setupRepositoriesList()
-        observeList()
 
         setSupportActionBar(binding.toolbar)
 
+        setupRepositoriesList()
+
+        observeList()
     }
 
     /*
@@ -56,11 +58,8 @@ class RepositoriesActivity : AppCompatActivity() {
     }
 
     fun setupRepositoriesList() {
+        binding.repositoryList.layoutManager = LinearLayoutManager(this)
         adapter = RepositoriesAdapter()
         binding.repositoryList.adapter = adapter
     }
-
-
-
-
 }
