@@ -16,11 +16,6 @@ import android.R.attr.data
 
 class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(ProductDiffCallback()) {
 
-   /* fun setData(newData: List<Repository>) {
-        this.repositories = newData
-        notifyDataSetChanged()
-    }
-*/
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
        return RepositoryViewHolder(
            DataBindingUtil.inflate(

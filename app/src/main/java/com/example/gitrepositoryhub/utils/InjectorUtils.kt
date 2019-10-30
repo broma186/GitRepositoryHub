@@ -16,7 +16,7 @@ object InjectorUtils {
         context: Context
     ): RepositoriesViewModelFactory {
         val repository = getRepositoryRepository(context)
-        return RepositoriesViewModelFactory(repository)
+        return RepositoriesViewModelFactory(repository, context)
     }
 }
 

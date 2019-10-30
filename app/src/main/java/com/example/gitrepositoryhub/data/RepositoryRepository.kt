@@ -1,8 +1,10 @@
 package com.example.gitrepositoryhub.data
 
+import javax.inject.Inject
+
 // The repository of the repository of all repositorie's repositories.
-class RepositoryRepository private constructor(
-    private val repositoryDao: RepositoryDao
+class RepositoryRepository @Inject internal constructor(
+    val repositoryDao: RepositoryDao
 ) {
 
     fun getRepositories() = repositoryDao.getRepositories()

@@ -6,19 +6,19 @@ import androidx.lifecycle.ViewModel
 import com.example.gitrepositoryhub.api.RepositoryServiceUtilities
 import com.example.gitrepositoryhub.data.Repository
 import com.example.gitrepositoryhub.data.RepositoryRepository
+import dagger.Provides
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.jetbrains.anko.toast
 import retrofit2.Response
+import javax.inject.Inject
 
+class RepositoriesViewModel @Inject constructor(val repositoryRepository: RepositoryRepository,
+                                                val context: Context) : ViewModel(), RepositoriesInterface {
 
-class RepositoriesViewModel internal constructor(
-    repositoryRepository: RepositoryRepository, val context: Context
-) : ViewModel(), RepositoriesInterface {
-    val repositories: LiveData<List<Repository>> =
-        getRepositoriesForDisplay(repositoryRepository)
+    val repositories: LiveData<List<Repository>> = getRepositoriesForDisplay(repositoryRepository)
 
     override fun getRepositoriesForDisplay(repositoryRepository: RepositoryRepository): LiveData<List<Repository>> {
         return repositoryRepository.getRepositories()
