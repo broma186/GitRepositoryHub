@@ -1,6 +1,5 @@
 package com.example.gitrepositoryhub.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -24,9 +23,9 @@ class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.Reposito
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        getItem(position).let { products ->
+        getItem(position).let { repository->
             with(holder) {
-                bind(products)
+                bind(repository)
             }
         }
     }
@@ -42,7 +41,7 @@ class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.Reposito
         }
     }
 
-   // Make sure that the git repositories aren't displayed twice.
+    // Make sure that the git repositories aren't displayed twice.
     private class RepositoriesDiffCallback : DiffUtil.ItemCallback<Repository>() {
 
         override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {

@@ -27,23 +27,19 @@ class RepositoriesActivity : AppCompatActivity() {
     lateinit var binding: ActivityRepositoriesBinding
     private lateinit var adapter: RepositoriesAdapter
     val context: Context = this
-
-    val repositoriesViewModel = ViewModelProviders.of(this, InjectorUtils.
-        provideRepositoriesViewModelFactory(context)).get(RepositoriesViewModel::class.java)
+    var repositoriesViewModel : RepositoriesViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        repositoriesViewModel = ViewModelProviders.of(this, InjectorUtils.
+            provideRepositoriesViewModelFactory(context)).get(RepositoriesViewModel::class.java)
+
         binding = DataBindingUtil.setContentView<ActivityRepositoriesBinding>(this, R.layout.activity_repositories)
-
-        setSupportActionBar(binding.toolbar)
-
+        setupRepositoriesList()
         observeList()
 
-
-        storeAllRepositories()
-
-
+        setSupportActionBar(binding.toolbar)
 
     }
 
@@ -53,7 +49,7 @@ class RepositoriesActivity : AppCompatActivity() {
       no repositories are returned in the result variable.
    */
     fun observeList() {
-        repositoriesViewModel.productList.observe(this, Observer {
+        repositoriesViewModel?.repositories?.observe(this, Observer {
                 result ->
             adapter.submitList(result)
         })
@@ -64,23 +60,7 @@ class RepositoriesActivity : AppCompatActivity() {
         binding.repositoryList.adapter = adapter
     }
 
-    /*
-   Coroutine runs on the IO thread for the API call to the endpoint that retrieves all repositories
-   with a GET request. If successful the results are stored in the database. Toast error reporting
-   will display on the main thread should either of the product operations fail.
-    */
-    fun storeAllRepositories() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response: Response<List<Repository>> = RepositoryServiceUtilities.getRepositories()
-            if (response.isSuccessful) {
-                RepositoryServiceUtilities.writeRepositoriesToDb(response.body(), context)
-                setupRepositoriesList()
-            }
-            withContext(Dispatchers.Main) {
-                toast("Failed to obtain repositories!")
-            }
-        }
-    }
+
 
 
 }

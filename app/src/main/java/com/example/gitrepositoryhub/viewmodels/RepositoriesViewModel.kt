@@ -9,16 +9,11 @@ import com.example.gitrepositoryhub.data.RepositoryRepository
 class RepositoriesViewModel internal constructor(
     repositoryRepository: RepositoryRepository
 ) : ViewModel(), RepositoriesInterface {
-    val productList: LiveData<List<Repository>> =
+    val repositories: LiveData<List<Repository>> =
         getRepositoriesForDisplay(repositoryRepository)
 
     override fun getRepositoriesForDisplay(repositoryRepository: RepositoryRepository): LiveData<List<Repository>> {
         return repositoryRepository.getRepositories()
-    }
-
-
-    fun storeAllRepositories() {
-
     }
 }
 
