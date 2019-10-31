@@ -4,34 +4,57 @@
 
     <data>
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
             name="viewModel"
             type="com.example.gitrepositoryhub.viewmodels.RepositoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/repository_layout"
-        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
+        android:background="@drawable/selector_repository_item"
+        android:focusable="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:onClick="@{clickListener}"
         android:layout_marginRight="15dp"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/avatar_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/list_item_rounded_corners"
+            app:imageFromUrl="@{viewModel.avatarUrl}"
+            android:onClick="@{clickListener}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colourBlack"
+            android:textSize="24sp"
             android:text="@{viewModel.name}"
-            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{clickListener}"
+            app:layout_constraintStart_toEndOf="@+id/avatar_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="16sp"
             android:text="@{viewModel.description}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name"/>
+            android:onClick="@{clickListener}"
+            app:layout_constraintStart_toEndOf="@+id/avatar_image"
+            app:layout_constraintTop_toBottomOf="@+id/name"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

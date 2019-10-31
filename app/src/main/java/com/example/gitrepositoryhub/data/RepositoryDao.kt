@@ -13,8 +13,8 @@ import javax.inject.Inject
 interface RepositoryDao {
 
     @Query("SELECT * FROM repository")
-    fun getRepositories(): LiveData<List<Repository>>
+    fun getRepositories(): LiveData<List<RoomRepository>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(repositories: List<Repository>?)
+    suspend fun insertAll(repositories: List<RoomRepository>?)
 }

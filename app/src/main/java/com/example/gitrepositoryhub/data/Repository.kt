@@ -1,19 +1,13 @@
 package com.example.gitrepositoryhub.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
-import javax.inject.Inject
-
-
-@Entity(
-    tableName = "repository",
-    indices = [Index("id")]
+data class Repository(
+    val id: Int?,
+    val name: String?,
+    val description: String?,
+    val html_url: String?,
+    val owner: Owner?
 )
 
-data class Repository (
-    @PrimaryKey @ColumnInfo(name = "id") val id: Int?,
-    @ColumnInfo(name = "name") val name: String?,
-    @ColumnInfo(name = "description") val description: String?
+data class Owner(
+    val avatar_url: String?
 )

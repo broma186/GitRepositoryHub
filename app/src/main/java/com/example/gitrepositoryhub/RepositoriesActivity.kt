@@ -3,6 +3,7 @@ package com.example.gitrepositoryhub
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -58,6 +59,9 @@ class RepositoriesActivity : AppCompatActivity(), HasAndroidInjector {
     fun observeList() {
         repositoriesViewModel.repositoryLiveData.observe(this, Observer {
                 result ->
+            if (!result.isNullOrEmpty()) {
+                binding.noRepositories.visibility = View.GONE
+            }
             adapter.submitList(result)
         })
     }

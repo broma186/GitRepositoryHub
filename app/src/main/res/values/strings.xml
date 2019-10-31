@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GitRepositoryHub</string>
+    <string name="app_name">Git-Repository-Hub</string>
+    <string name="no_repositories">No Repositories</string>
 </resources>

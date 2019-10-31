@@ -36,6 +36,13 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
     class RepositoryViewHolder(
         private val binding: ListItemRepositoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.setClickListener { view ->
+                binding.viewModel?.openGitRepository(binding.root.context)
+            }
+        }
+
         fun bind(repository: Repository) {
             with(binding) {
                 viewModel = RepositoryViewModel(repository)
@@ -54,5 +61,4 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
             return oldItem.name == newItem.name
         }
     }
-
 }

@@ -11,7 +11,7 @@
             android:id="@+id/toolbar"
             style="@style/Widget.AppCompat.Toolbar"
             android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
+            android:background="@color/cardview_dark_background"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -19,19 +19,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:gravity="center"
-                android:textSize="30sp"
+                android:textSize="24sp"
+                android:textColor="@color/colourWhite"
                 android:text="@string/app_name" />
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/repository_list"
             android:layout_width="match_parent"
+            android:focusable="true"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             tools:listitem="@layout/list_item_repository" />
-
+        <LinearLayout
+            android:id="@+id/no_repositories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="@string/no_repositories"
+                android:textAppearance="?attr/textAppearanceHeadline5" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -15,6 +15,7 @@ buildscript {
         ankoVersion = '0.9'
         gsonVersion = '2.8.2'
         recyclerViewVersion = '1.1.0-alpha05'
+        glideVersion = '4.9.0'
     }
     repositories {
         google()

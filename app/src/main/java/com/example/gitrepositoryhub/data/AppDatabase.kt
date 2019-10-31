@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.gitrepositoryhub.utils.DATABASE_NAME
 
-@Database(entities = [Repository::class], version = 1, exportSchema = false)
+@Database(entities = [RoomRepository::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun repositoryDao(): RepositoryDao
