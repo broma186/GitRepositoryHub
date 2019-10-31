@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.gitrepositoryhub.di.ViewModelKey
 import com.example.gitrepositoryhub.viewmodels.RepositoriesViewModel
-import com.example.gitrepositoryhub.viewmodels.RepositoriesViewModelFactory
+import com.example.gitrepositoryhub.viewmodels.RepositoriesViewModelViewFactory
 import dagger.ActivityScope
 import dagger.Binds
 import dagger.Module
@@ -16,18 +16,9 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ActivityScope
     @ViewModelKey(RepositoriesViewModel::class)
     abstract fun bindMainViewModel(repositoriesViewModel: RepositoriesViewModel): ViewModel
 
-    @Module
-    companion object {
-
-        @JvmStatic
-        @Provides
-        @ActivityScope
-        fun bindViewModelFactory(repositoriesViewModelFactory: RepositoriesViewModelFactory): ViewModelProvider.NewInstanceFactory {
-            return repositoriesViewModelFactory
-        }
-    }
+    @Binds
+    abstract fun bindViewModelFactory(viewModelFactory: RepositoriesViewModelViewFactory): ViewModelProvider.Factory
 }
