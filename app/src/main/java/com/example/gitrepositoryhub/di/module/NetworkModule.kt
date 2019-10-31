@@ -20,5 +20,4 @@ class NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(RepositoryService::class.java)
     }
-
 }

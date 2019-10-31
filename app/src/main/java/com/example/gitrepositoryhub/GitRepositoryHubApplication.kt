@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import di.DaggerAppComponent
 import javax.inject.Inject
 
 class GitRepositoryHubApplication : Application(), HasAndroidInjector  {
@@ -15,9 +16,8 @@ class GitRepositoryHubApplication : Application(), HasAndroidInjector  {
     val context : Context = this
 
     override fun onCreate() {
-        super.onCreate()
-
         DaggerAppComponent.create().inject(this)
+        super.onCreate()
     }
 
     override fun androidInjector(): AndroidInjector<Any> {

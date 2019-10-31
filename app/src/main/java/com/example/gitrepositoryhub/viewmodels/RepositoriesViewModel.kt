@@ -8,6 +8,7 @@ import com.example.gitrepositoryhub.data.RepositoryRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -25,9 +26,11 @@ class RepositoriesViewModel @Inject constructor(val repositoryRepository: Reposi
       */
     fun storeAllRepositories() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response: Response<List<Repository>> = repositoryRepository.downloadRepositories()
+            val response: Response<List<Repository>> = repositoryRepository.getRepositories()
             if (response.isSuccessful) {
-                repositoryLiveData.value = response.body()
+                withContext(Dispatchers.Main) {
+                    repositoryLiveData.value = response.body()
+                }
             }
         }
     }

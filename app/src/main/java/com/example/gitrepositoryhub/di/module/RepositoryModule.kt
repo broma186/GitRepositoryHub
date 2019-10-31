@@ -18,14 +18,4 @@ abstract class RepositoryModule {
     @Binds
     abstract fun bindRepositoryRepository(repositoryDataRepository: RepositoryDataRepository): RepositoryRepository
 
-    @Module
-    companion object {
-
-        @JvmStatic
-        @Singleton
-        @Provides
-        fun provideRepositoryService(retrofit: Retrofit): RepositoryService {
-            return retrofit.create(RepositoryService::class.java)
-        }
-    }
 }
