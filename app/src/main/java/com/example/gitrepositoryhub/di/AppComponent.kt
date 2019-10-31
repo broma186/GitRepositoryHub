@@ -1,9 +1,8 @@
-package dagger
+package di
 
 import com.example.gitrepositoryhub.GitRepositoryHubApplication
-import com.example.gitrepositoryhub.di.module.RepositoryBindingModule
-import com.example.gitrepositoryhub.di.module.RepositoryModule
-import com.example.gitrepositoryhub.di.module.ViewModelModule
+import com.example.gitrepositoryhub.di.module.*
+import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
@@ -13,8 +12,10 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        RepositoryBindingModule::class,
-        ViewModelModule::class
+        ActivityBindingModule::class,
+        ViewModelModule::class,
+        RepositoryModule::class,
+        NetworkModule::class
     ]
 )
 interface AppComponent : AndroidInjector<GitRepositoryHubApplication>

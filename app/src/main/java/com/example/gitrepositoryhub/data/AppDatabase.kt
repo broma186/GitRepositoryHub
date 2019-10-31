@@ -9,6 +9,7 @@ import com.example.gitrepositoryhub.utils.DATABASE_NAME
 
 @Database(entities = [Repository::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun repositoryDao(): RepositoryDao
 
     companion object {

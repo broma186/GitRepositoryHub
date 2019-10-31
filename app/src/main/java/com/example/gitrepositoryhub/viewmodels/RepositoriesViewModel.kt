@@ -27,7 +27,6 @@ class RepositoriesViewModel @Inject constructor(val repositoryRepository: Reposi
         CoroutineScope(Dispatchers.IO).launch {
             val response: Response<List<Repository>> = repositoryRepository.downloadRepositories()
             if (response.isSuccessful) {
-                repositoryRepository.writeRepositoriesToDb(response.body())
                 repositoryLiveData.value = response.body()
             }
         }
