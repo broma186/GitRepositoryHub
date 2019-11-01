@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.io.IOException
 import javax.inject.Inject
 
 /*
@@ -36,6 +37,8 @@ class RepositoriesViewModel @Inject constructor(val repositoryRepository: Reposi
                 withContext(Dispatchers.Main) {
                     repositoryLiveData.value = response.body()
                 }
+            } else {
+                throw IOException("Failed to download repositories")
             }
         }
     }

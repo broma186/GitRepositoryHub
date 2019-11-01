@@ -9,5 +9,5 @@ import javax.inject.Singleton
 interface RepositoryRepository {
 
     // Downloads all the products from the server endpoint.
-    suspend fun getRepositories() : Response<List<Repository>>
+    fun getRepositories() : Response<List<Repository>>
 }

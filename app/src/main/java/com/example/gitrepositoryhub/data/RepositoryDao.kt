@@ -18,6 +18,9 @@ interface RepositoryDao {
     @Query("SELECT * FROM repository")
     fun getRepositories(): LiveData<List<RoomRepository>>
 
+    @Query("SELECT * FROM repository WHERE id = :id")
+    fun getRepository(id : Int?): LiveData<List<RoomRepository>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(repositories: List<RoomRepository>?)
 }

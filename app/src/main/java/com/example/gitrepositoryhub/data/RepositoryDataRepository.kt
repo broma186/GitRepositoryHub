@@ -15,7 +15,7 @@ class RepositoryDataRepository
 @Inject
 constructor(private val repositoryService: RepositoryService) : RepositoryRepository {
 
-    override suspend fun getRepositories(): Response<List<Repository>> {
+    override fun getRepositories(): Response<List<Repository>> {
         return repositoryService.getRepositories()
     }
 }

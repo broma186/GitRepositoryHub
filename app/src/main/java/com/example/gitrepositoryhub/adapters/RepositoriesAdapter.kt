@@ -46,7 +46,7 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.setClickListener { view ->
+            binding.setClickListener {
                 binding.viewModel?.openGitRepository(binding.root.context)
             }
         }
