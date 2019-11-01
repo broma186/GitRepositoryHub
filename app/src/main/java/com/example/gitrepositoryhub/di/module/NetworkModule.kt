@@ -9,6 +9,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+/*
+Provides the retrofit service to wherever it is injected. Namely in the
+RepositoryDataRepository class.
+ */
 @Module
 class NetworkModule {
 

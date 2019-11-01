@@ -1,5 +1,8 @@
 package com.example.gitrepositoryhub.data
 
+/*
+POJO for all repositories.
+ */
 data class Repository(
     val id: Int?,
     val name: String?,

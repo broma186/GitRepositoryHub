@@ -5,6 +5,9 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
+/*
+    Used so that Glide can load image urls into the adapter list binding
+ */
 object BindingAdapters {
     @BindingAdapter("imageFromUrl")
     @JvmStatic

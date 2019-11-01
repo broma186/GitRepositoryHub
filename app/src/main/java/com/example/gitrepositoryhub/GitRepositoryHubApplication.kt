@@ -8,6 +8,9 @@ import dagger.android.HasAndroidInjector
 import di.DaggerAppComponent
 import javax.inject.Inject
 
+/*
+Application class set up for the intention of dependency injection.
+ */
 class GitRepositoryHubApplication : Application(), HasAndroidInjector  {
 
     @Inject

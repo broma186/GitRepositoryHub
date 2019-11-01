@@ -7,6 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.gitrepositoryhub.utils.DATABASE_NAME
 
+/*
+Not needed yet but can be implemented so that each repository is stored in the
+database.
+ */
 @Database(entities = [RoomRepository::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 

@@ -12,6 +12,11 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import javax.inject.Inject
 
+/*
+The ViewModel class for the repositories activity that provides the livedata needed to be observed to
+ update the relevant recycler view adapter. Downloads (and stores once Room is implemented) repositories
+ when the ViewModel is created.
+ */
 class RepositoriesViewModel @Inject constructor(val repositoryRepository: RepositoryRepository) : ViewModel() {
 
     val repositoryLiveData = MutableLiveData<List<Repository>>()

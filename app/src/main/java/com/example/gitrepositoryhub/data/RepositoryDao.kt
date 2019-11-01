@@ -8,7 +8,10 @@ import androidx.room.Query
 import dagger.Provides
 import javax.inject.Inject
 
-
+/*
+Not injected as a dependency yet as these database calls are not needed
+in the current implementation. Inserts/gets the local RoomRepository objects.
+ */
 @Dao
 interface RepositoryDao {
 

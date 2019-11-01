@@ -18,6 +18,9 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
+/*
+    Displays the git repositiories using a recycler view, custom list adapter and an injected view model.
+ */
 class RepositoriesActivity : AppCompatActivity(), HasAndroidInjector {
 
     @Inject
@@ -44,6 +47,7 @@ class RepositoriesActivity : AppCompatActivity(), HasAndroidInjector {
         binding = DataBindingUtil.setContentView<ActivityRepositoriesBinding>(this, R.layout.activity_repositories)
         setSupportActionBar(binding.toolbar)
 
+        // Initialize the repositories view model using injected viewModelFactory.
         repositoriesViewModel = ViewModelProviders.of(this, viewModelFactory)[RepositoriesViewModel::class.java]
 
         setupRepositoriesList()
@@ -53,7 +57,7 @@ class RepositoriesActivity : AppCompatActivity(), HasAndroidInjector {
 
     /*
       Utilizes live data to Observe any changes in the database which then refreshes the list of repositories
-      that are displayed in the recycler view. Will indicate there are no products with a textview if
+      that are displayed in the recycler view. Will indicate there are no repositories with a textview if
       no repositories are returned in the result variable.
    */
     fun observeList() {

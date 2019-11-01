@@ -6,6 +6,10 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/*
+The class that calls the injected service as a dependency to download the git repositories
+from the server.
+ */
 @Singleton
 class RepositoryDataRepository
 @Inject

@@ -2,8 +2,9 @@ package dagger
 
 import javax.inject.Scope
 
-/**
- * Created by "Avishek" on 8/21/2019.
+/*
+    Created to ensure dependencies are attached to only the scope of the main repositories
+    activity.
  */
 @Scope
 @Retention(AnnotationRetention.RUNTIME)

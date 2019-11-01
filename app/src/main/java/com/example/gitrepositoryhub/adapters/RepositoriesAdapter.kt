@@ -13,7 +13,10 @@ import com.example.gitrepositoryhub.viewmodels.RepositoryViewModel
 import android.R.attr.data
 
 
-
+/*
+Displays the list of repositories using data binding. This is the adapter for the recycler view found
+in the Repositories Activity.
+ */
 class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(ProductDiffCallback()) {
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
@@ -33,6 +36,11 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
         }
     }
 
+    /*
+    View Holder binds to the list_item_repository file and displays the RepositoriesViewModel values.
+    The onClickListener data variable in the xml is set here, it opens the selected git repository via
+    the chosen browser.
+     */
     class RepositoryViewHolder(
         private val binding: ListItemRepositoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -51,6 +59,7 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
         }
     }
 
+    // Make sure there are no duplicated items in the returned list.
     private class ProductDiffCallback : DiffUtil.ItemCallback<Repository>() {
 
         override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {

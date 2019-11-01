@@ -11,7 +11,9 @@ import dagger.Provides
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-
+/*
+    Binds the data repository as a dependency of RepositoriesViewModel.
+ */
 @Module
 abstract class RepositoryModule {
 

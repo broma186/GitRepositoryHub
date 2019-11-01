@@ -13,6 +13,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 
+/*
+Binds the view model and the view model creator (factory) to the main activity in this case.
+ */
 @Module
 abstract class ViewModelModule {
 
