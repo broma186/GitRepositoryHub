@@ -1,7 +1,7 @@
 package com.example.gitrepositoryhub.data
 
+import android.content.pm.ApplicationInfo
 import androidx.room.Room
-import androidx.test.platform.app.InstrumentationRegistry
 import com.nhaarman.mockito_kotlin.spy
 import org.junit.After
 import org.junit.Before
@@ -9,6 +9,7 @@ import org.junit.Test
 import com.example.gitrepositoryhub.utils.getValue
 import kotlinx.coroutines.runBlocking
 import org.apache.commons.validator.routines.UrlValidator
+
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.*
 import org.mockito.Spy
@@ -30,7 +31,7 @@ class RepositoryDaoTest {
 
     @Before
     fun setUp() = runBlocking {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val context = InstrumentationRegistry.getInstrumentation().getTargetContext()
         database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         repositoryDaoSpy.insertAll(repositories)
         urlValidator = UrlValidator()

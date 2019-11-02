@@ -17,7 +17,7 @@ import android.R.attr.data
 Displays the list of repositories using data binding. This is the adapter for the recycler view found
 in the Repositories Activity.
  */
-class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(ProductDiffCallback()) {
+class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.RepositoryViewHolder>(RepositoryDiffCallback()) {
 
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
        return RepositoryViewHolder(
@@ -60,7 +60,7 @@ class RepositoriesAdapter: ListAdapter<Repository, RepositoriesAdapter.Repositor
     }
 
     // Make sure there are no duplicated items in the returned list.
-    private class ProductDiffCallback : DiffUtil.ItemCallback<Repository>() {
+    private class RepositoryDiffCallback : DiffUtil.ItemCallback<Repository>() {
 
         override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {
             return oldItem.id == newItem.id

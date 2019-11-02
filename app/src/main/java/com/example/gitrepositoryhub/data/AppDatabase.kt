@@ -17,7 +17,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun repositoryDao(): RepositoryDao
 
     companion object {
-
         // For Singleton instantiation
         @Volatile
         private var instance: AppDatabase? = null
