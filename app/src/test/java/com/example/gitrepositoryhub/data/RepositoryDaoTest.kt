@@ -9,7 +9,7 @@ import org.junit.Test
 import com.example.gitrepositoryhub.utils.getValue
 import kotlinx.coroutines.runBlocking
 import org.apache.commons.validator.routines.UrlValidator
-
+import android.support.test.InstrumentationRegistry
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.*
 import org.mockito.Spy
